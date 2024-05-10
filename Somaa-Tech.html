@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سمعة للمعلوميات - Somaa Tech</title>
+    <style>
+        body {
+            background-color: #eaeaea; /* لون الخلفية */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #header {
+            background-color: #333; /* لون العنوان */
+            color: rgb(255, 255, 255); /* لون النص */
+            padding: 20px;
+        }
+        #content {
+            background-color: #ccc; /* لون الخلفية */
+            padding: 50px 0;
+        }
+        #footer {
+            background-color: #fff; /* لون الخلفية */
+            padding: 20px 0;
+        }
+        #review {
+            margin-top: 20px;
+        }
+        .search-container {
+            margin-top: 20px;
+        }
+        #facebook-link,
+        #earn-link {
+            background-color: #eaeaea;
+            display: inline-block;
+            padding: 5px 10px; /* تقليل حجم الكتابة */
+            border: 2px solid #333;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px; /* تقليل حجم الكتابة */
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        #facebook-link:hover,
+        #earn-link:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        #app-name {
+            display: none;
+            background-color: #ff0;
+            border: 2px solid #333;
+            padding: 12px 20px; /* تحديد حجم الإطار الأصفر بنفس حجم الكتابة */
+            font-weight: bold;
+            margin-top: 5px; /* تقليل المسافة بين النص والإطار */
+            cursor: pointer;
+            font-size: 14px; /* تقليل حجم الكتابة */
+        }
+        #right-image {
+            float: right;
+            margin-left: 10px;
+        }
+        #left-image {
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>سمعة للمعلوميات - Somaa Tech</h1>
+    </div>
+    <div id="content">
+        <div style="background-color: red; color: rgb(92, 252, 0); padding: 20px; margin: auto; width: 50%;">
+            <h2>سمعة للمعلوميات - Somaa Tech مرحبا بكم في موقع</h2>
+            <div style="overflow: hidden;">
+                <img id="right-image" src="01.png" alt="الصورة الأولى" style="float: right; width: 100px; height: auto;">
+                <img id="left-image" src="02.png" alt="الصورة الثانية" style="float: left; width: 200px; height: auto;">
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div id="footer">
+        <form id="review">
+            <label for="rating">ماهو تقييمك للموقع؟</label>
+            <select name="rating" id="rating">
+                <option value="ممتاز">ممتاز</option>
+                <option value="لابأس">لابأس</option>
+                <option value="عادي">عادي</option>
+                <option value="جيد جدا">جيد جدا</option>
+            </select>
+            <input type="submit" value="إرسال التقييم">
+        </form>
+    </div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="ابحث عن عنوان الفيديو">
+        <button onclick="searchVideos()">بحث</button>
+    </div>
+    <h2 id="videos-title">الفيديوهات</h2>
+    <ul id="video-list">
+        <li><a href="https://youtu.be/9eAkpTC12AI?si=MsAtEvOioxSh0r9H" target="_blank">موقع ربح لانهائي للعملات الرقمية Earn - Pepe</a></li>
+        <li><a href="https://youtu.be/RGxgUxtPTYk?si=6NYp_8vVb1OzC3pX" target="_blank">طريقة فتح حساب ال FaucetPay و حمايته من الإختراق</a></li>
+    </ul>
+    <a id="facebook-link" href="https://www.facebook.com/profile.php?id=61559522123115&locale=fr_FR" target="_blank">تابعوا صفحتي الشخصية على الفايسبوك</a>
+    <a id="earn-link" href="#" onclick="toggleAppName()">تحميل تطبيقات الربح من الإنترنت</a>
+    <div id="app-name">Download the "Lemon Tron Faucet" application</div>
+    <script>
+        var appNameDisplayed = false;
+
+        function toggleAppName() {
+            if (!appNameDisplayed) {
+                document.getElementById("app-name").style.display = "block";
+                appNameDisplayed = true;
+            } else {
+                document.getElementById("app-name").style.display = "none";
+                appNameDisplayed = false;
+            }
+        }
+
+        function searchVideos() {
+            var input = document.getElementById("search-input");
+            var filter = input.value.toUpperCase();
+            var ul = document.getElementById("video-list");
+            var li = ul.getElementsByTagName("li");
+
+            for (var i = 0; i < li.length; i++) {
+                var a = li[i].getElementsByTagName("a")[0];
+                var txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        document.getElementById("search-input").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                searchVideos();
+            }        
+        });
+
+        // Function to handle clicking on the app name link
+        document.getElementById("app-name").addEventListener("click", function() {
+            window.location.href = "https://play.google.com/store/apps/details?id=com.bmdf.lemontronfaucet&hl=en_US";
+        });
+    </script>
+</body>
+</html>
